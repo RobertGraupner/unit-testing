@@ -3,41 +3,35 @@ import { division } from '../src/division.js';
 // Nie powinnismy tworzyć testów, które sprawdzają funkcje danego języka. 
 // Zakładamy, że wszystkie funkcje w języku JavaScript są napisane poprawnie.
 
-function test1 () {
+test('Test dzielenia', () => {
 	const a = 42;
 	const b = 6;
 	const expectedResult = 7;
 
 	const actualResult = division(a, b);
 
+	expect(actualResult).toEqual(expectedResult);
+})
 
-	if(actualResult === expectedResult) {
-		console.log('Dzielenie działa poprawnie');
-	}
-}
-test1();
-
-function test2 () {
+test('Test dzielenia przez zero', () => {
 	const a = 25;
 	const b = 0;
 	const expectedResult = Infinity;
 
 	const actualResult = division(a, b);
 
-	if(actualResult === expectedResult) {
-		console.log('Dzielenie przez zero działa poprawnie');
-	}
-}
-test2();
+	expect(actualResult).toEqual(expectedResult);
+})
 
-function test3 () {
+test('Test dzielenia napisów', () => {
 	const a = 'a';
 	const b = 'b';
 
 	const actualResult = division(a, b);
 
-	if(isNaN(actualResult)) {
-		console.log('Dzielenie napisów przez siebie działa poprawnie');
-	}
-}
-test3();
+	expect(actualResult).toBeNaN();
+})
+
+// możemy wywołać npm run test w trybie watch, żeby testy były uruchamiane automatycznie po każdej zmianie plików
+// npm run test -- --watch
+
